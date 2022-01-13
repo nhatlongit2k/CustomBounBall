@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/drag"
+        style="@style/AppTheme.CircleTextView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:backgroundTint="#81c784"
+        android:gravity="center"
+        android:layout_marginRight="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/first"
+        style="@style/AppTheme.CircleTextView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="@color/colorYellow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/drag"/>
+
+    <TextView
+        android:id="@+id/second"
+        style="@style/AppTheme.CircleTextView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:gravity="center"
+        android:backgroundTint="@color/colorOrange"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/first" />
+    <TextView
+        android:id="@+id/third"
+        style="@style/AppTheme.CircleTextView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="@color/colorRed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/second" />
+    <TextView
+        android:id="@+id/fourth"
+        style="@style/AppTheme.CircleTextView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="#81c784"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/third" />
+    <TextView
+        android:id="@+id/fifth"
+        style="@style/AppTheme.CircleTextView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="@color/colorYellow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/fourth" />
+    <TextView
+        android:id="@+id/sixth"
+        style="@style/AppTheme.CircleTextView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="@color/colorOrange"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/fifth" />
+    <TextView
+        android:id="@+id/seventh"
+        style="@style/AppTheme.CircleTextView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="@color/colorRed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/sixth" />
+</androidx.constraintlayout.widget.ConstraintLayout>
