@@ -116,6 +116,8 @@ class MainActivity : AppCompatActivity() {
     private var dY = 0f
     private var positionX = 0f
     private var positionY = 0f
+    private var cenWidth = 0 // use to caculate ball view
+    private var cenHeigh = 0 // use to caculate ball view
 
     var job: Job? = null
 
@@ -205,19 +207,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAnimation() {
-        binding.drag.setOnTouchListener { view, event ->
+        binding.layout.setOnTouchListener { view, motionEvent ->
             job?.cancel()
-            when (event.action) {
+            when (motionEvent.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    dX = view.x - event.rawX
-                    dY = view.y - event.rawY
+                    cenWidth = binding.drag.width / 2
+                    cenHeigh = binding.drag.height / 2
+                    dragXAnim.animateToFinalPosition(motionEvent.x - cenWidth)
+                    dragYAnim.animateToFinalPosition(motionEvent.y - cenHeigh)
                 }
 
                 MotionEvent.ACTION_MOVE -> {
-                    val newX = event.rawX + dX
-                    val newY = event.rawY + dY
-                    dragXAnim.animateToFinalPosition(newX)
-                    dragYAnim.animateToFinalPosition(newY)
+                    dragXAnim.animateToFinalPosition(motionEvent.x - cenWidth)
+                    dragYAnim.animateToFinalPosition(motionEvent.y - cenHeigh)
                 }
                 MotionEvent.ACTION_UP -> {
                     job = GlobalScope.launch(Dispatchers.Main) {
@@ -249,6 +251,51 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnTouchListener true
         }
+
+//        binding.drag.setOnTouchListener { view, event ->
+//            job?.cancel()
+//            when (event.action) {
+//                MotionEvent.ACTION_DOWN -> {
+//                    dX = view.x - event.rawX
+//                    dY = view.y - event.rawY
+//                }
+//
+//                MotionEvent.ACTION_MOVE -> {
+//                    val newX = event.rawX + dX
+//                    val newY = event.rawY + dY
+//                    dragXAnim.animateToFinalPosition(newX)
+//                    dragYAnim.animateToFinalPosition(newY)
+//                }
+//                MotionEvent.ACTION_UP -> {
+//                    job = GlobalScope.launch(Dispatchers.Main) {
+//                        delay(5000)
+//                        dragXAnim.animateToFinalPosition(positionX)
+//                        dragYAnim.animateToFinalPosition(positionY)
+//                        delay(1000)
+//                        val maxY = positionY + 250
+//                        val minY = positionY - 250
+//                        var y = positionY
+//                        var up = true
+//                        while (true) {
+//                            if (up == true) {
+//                                y = y + 60
+//                                delay(34)
+//                                dragYAnim.animateToFinalPosition(y)
+//                            } else {
+//                                y = y - 60
+//                                delay(34)
+//                                dragYAnim.animateToFinalPosition(y)
+//                            }
+//                            if (y >= maxY)
+//                                up = false
+//                            if (y <= minY)
+//                                up = true
+//                        }
+//                    }
+//                }
+//            }
+//            return@setOnTouchListener true
+//        }
     }
 
     private fun <K> createSpringAnimation(
